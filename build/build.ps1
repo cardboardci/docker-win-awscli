@@ -17,10 +17,10 @@ if (! (Test-Path Env:\CI_REGISTRY_PASSWORD)) {
   exit 0
 }
 
-docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+docker login -u "$env:CI_REGISTRY_USER" -p "$env:CI_REGISTRY_PASSWORD" $env:CI_REGISTRY
 
-docker build --pull -t $image -f Dockerfile .
-docker images
+# docker build --pull -t $image -f Dockerfile .
+# docker images
 
-Write-Host Starting deploy
-docker push "$image"
+# Write-Host Starting deploy
+# docker push "$image"

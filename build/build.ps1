@@ -1,4 +1,4 @@
-$ErrorActionPreference = 'Stop';
+#$ErrorActionPreference = 'Stop';
 Write-Host Starting build
 $image = "quay.io/cardboardci/awscli:windows"
 

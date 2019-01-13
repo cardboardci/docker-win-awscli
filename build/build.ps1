@@ -1,4 +1,4 @@
-$ErrorActionPreference = 'Stop';
+$ErrorActionPreference = 'Ignore';
 Write-Host Starting build
 $image = "quay.io/cardboardci/awscli:windows"
 
@@ -17,13 +17,7 @@ if (! (Test-Path Env:\CI_REGISTRY_PASSWORD)) {
   exit 0
 }
 
-Write-Host "docker login -u $env:CI_REGISTRY_USER -p $env:CI_REGISTRY_PASSWORD $env:CI_REGISTRY"
-
-try {
-    docker login -u "$env:CI_REGISTRY_USER" -p "$env:CI_REGISTRY_PASSWORD" $env:CI_REGISTRY
-} catch {
-}
-
+docker login -u "$env:CI_REGISTRY_USER" -p "$env:CI_REGISTRY_PASSWORD" $env:CI_REGISTRY
 docker build --pull -t $image -f Dockerfile .
 docker images
 

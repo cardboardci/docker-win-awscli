@@ -7,7 +7,7 @@ environment:
     - ARCH: amd64
 
 build_script:
-  - ps: ./build.ps1
+  - ps: ./build/build.ps1
 
 # deploy_script:
 #   - ps: ./deploy.ps1

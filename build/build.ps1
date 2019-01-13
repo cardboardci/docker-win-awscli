@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop';
 Write-Host Starting build
-$image = "cardboardci/awscli:windows"
+$image = "quay.io/cardboardci/awscli:windows"
 
 docker build --pull -t $image -f Dockerfile .
 docker images

@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Ignore';
 Write-Host Starting build
-$image = "quay.io/cardboardci/awscli:windows"
+$image = "quay.io/cardboardci/awscli:windows-alpha"
 
 if (! (Test-Path Env:\CI_REGISTRY)) {
   Write-Host "No registry provided. Skip publishing."

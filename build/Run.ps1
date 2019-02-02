@@ -16,6 +16,8 @@ if (! (Test-Path Env:\CI_REGISTRY_PASSWORD)) {
   exit 0
 }
 
+Get-Content "C:\ProgramData\Docker\config\daemon.json"
+
 # docker login -u "$env:CI_REGISTRY_USER" -p "$env:CI_REGISTRY_PASSWORD" $env:CI_REGISTRY
 # docker build --pull -t $image -f Dockerfile .
 # docker images

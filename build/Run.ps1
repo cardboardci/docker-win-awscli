@@ -1,15 +1,5 @@
 Write-Host "Starting build"
-
-try {
-  Get-ChildItem "C:\"
-  Get-ChildItem "C:\ProgramData\"
-  Get-ChildItem "C:\ProgramData\Docker\"
-  Get-ChildItem "C:\ProgramData\Docker\config"
-  Get-Content "C:\ProgramData\Docker\config\daemon.json"
-} catch {
-  Write-Host "Could not find the file"
-}
-
+Set-Content -Path "C:\ProgramData\Docker\config\daemon.json" -Value ( @{ "experimental" = $true } | ConvertTo-Json )
 docker images
 docker manifest --help 
 

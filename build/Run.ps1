@@ -1,6 +1,5 @@
 $ErrorActionPreference = 'Ignore';
-Write-Host Starting build
-$image = "cardboardci/awscli:windows-alpha"
+Write-Host "Starting build"
 
 if (! (Test-Path Env:\CI_REGISTRY)) {
   Write-Host "No registry provided. Skip publishing."
@@ -17,9 +16,9 @@ if (! (Test-Path Env:\CI_REGISTRY_PASSWORD)) {
   exit 0
 }
 
-docker login -u "$env:CI_REGISTRY_USER" -p "$env:CI_REGISTRY_PASSWORD" $env:CI_REGISTRY
-docker build --pull -t $image -f Dockerfile .
-docker images
+# docker login -u "$env:CI_REGISTRY_USER" -p "$env:CI_REGISTRY_PASSWORD" $env:CI_REGISTRY
+# docker build --pull -t $image -f Dockerfile .
+# docker images
 
-Write-Host Starting deploy
-docker push "$image"
+# Write-Host Starting deploy
+# docker push "$image"

@@ -1,6 +1,12 @@
 Write-Host "Starting build"
 Set-Content -Path "C:\ProgramData\Docker\config\daemon.json" -Value ( @{ "experimental" = $true } | ConvertTo-Json )
-docker images
+Get-Content -Path "C:\ProgramData\Docker\config\daemon.json" 
+
+
+docker version
+restart-service *docker*
+Start-Sleep -Seconds 5
+docker version
 docker manifest --help 
 
 # docker login -u "$env:CI_REGISTRY_USER" -p "$env:CI_REGISTRY_PASSWORD" $env:CI_REGISTRY

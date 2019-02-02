@@ -1,6 +1,7 @@
 Write-Host "Starting build"
+New-Item -Path "$HOME\.docker" -Type Directory -Force
 Set-Content -Path "C:\ProgramData\Docker\config\daemon.json" -Value ( @{ "experimental" = $true } | ConvertTo-Json )
-Set-Content -Path "$HOME/.docker/config.json" -Value ( @{ "experimental" = $true } | ConvertTo-Json )
+Set-Content -Path "$HOME\.docker\config.json" -Value ( @{ "experimental" = $true } | ConvertTo-Json )
 
 docker version
 restart-service *docker*

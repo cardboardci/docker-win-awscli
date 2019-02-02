@@ -5,9 +5,11 @@ Set-Content -Path "$HOME\.docker\config.json" -Value ( @{ "experimental" = "enab
 restart-service *docker*
 Start-Sleep -Seconds 5
 
+docker version
+
 Write-Host "Starting build"
-docker build --pull -t cardboardci/awscli:windows -f Dockerfile .
-docker push cardboardci/awscli:windows
+# docker build --pull -t cardboardci/awscli:windows -f Dockerfile .
+# docker push cardboardci/awscli:windows
 docker manifest create 
     cardboardci/awscli:edge 
     cardboardci/awscli:linux 

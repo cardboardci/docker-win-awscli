@@ -1,0 +1,20 @@
+image: docker:latest
+
+stages:
+  - "Validate"
+  - "Analyze"
+
+##
+## Validate
+##
+PSScriptAnalyzer:
+  stage: "Validate"
+  image: cardboardci/psscriptanalyzer:edge
+  script:
+    - PSScriptAnalyzer -Path build/
+
+# hadolint:
+#   stage: "Validate"
+#   image: cardboardci/hadolint
+#   script:
+#     - hadolint Dockerfile*

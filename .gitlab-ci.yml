@@ -11,7 +11,7 @@ PSScriptAnalyzer:
   stage: "Validate"
   image: cardboardci/psscriptanalyzer:edge
   script:
-    - Invoke-ScriptAnalyzer -Path build/
+    - psscriptanalyzer -Path build/
 
 # hadolint:
 #   stage: "Validate"

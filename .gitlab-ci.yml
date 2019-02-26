@@ -1,0 +1,20 @@
+image: docker:latest
+
+stages:
+  - "Validate"
+  - "Analyze"
+
+##
+## Validate
+##
+shellcheck:
+  stage: "Validate"
+  image: cardboardci/shellcheck
+  script:
+    - shellcheck provision/*.sh
+
+hadolint:
+  stage: "Validate"
+  image: cardboardci/hadolint
+  script:
+    - hadolint Dockerfile*

@@ -1,23 +1,33 @@
 pool:
-  vmImage: Hosted VS2017
+  vmImage: 'windows-2019'
+
+trigger: none
+
 steps:
 - task: Docker@1
-  displayName: login
+  displayName: Login
   inputs:
     containerregistrytype: 'Container Registry'
     dockerRegistryEndpoint: DockerHub
     command: login
 
-- task: PowerShell@2
-  displayName: 'PowerShell Script'
+- task: onlyutkarsh.gitlab-integration.gitlab-downloadrepo-task.downloadgitlabrepository@1
+  displayName: 'Download Repository'
   inputs:
-    targetType: ./
-    filePath: .docker/Setup.ps1
+    connection: Gitlab
+    definition: 10343993
+    downloadPath: '$(Build.Repository.LocalPath)/r'
 
 - task: PowerShell@2
-  displayName: 'PowerShell Script'
+  displayName: Setup
   inputs:
-    targetType: ./
-    filePath: build/Run.ps1
-    failOnStderr: true
+    targetType: filePath
+    filePath: '$(Build.Repository.LocalPath)/r/.docker/Setup.ps1'
+    workingDirectory: '$(Build.Repository.LocalPath)/r'
 
+- task: PowerShell@2
+  displayName: Build
+  inputs:
+    targetType: filePath
+    filePath: '$(Build.Repository.LocalPath)/r/build/Run.ps1'
+    workingDirectory: '$(Build.Repository.LocalPath)/r'

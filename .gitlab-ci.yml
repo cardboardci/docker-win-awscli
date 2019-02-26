@@ -13,8 +13,8 @@ stages:
 #   script:
 #     - shellcheck provision/*.sh
 
-hadolint:
-  stage: "Validate"
-  image: cardboardci/hadolint
-  script:
-    - hadolint Dockerfile*
+# hadolint:
+#   stage: "Validate"
+#   image: cardboardci/hadolint
+#   script:
+#     - hadolint Dockerfile*

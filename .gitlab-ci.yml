@@ -25,7 +25,7 @@ PSScriptAnalyzer:
 ##
 azure:
   stage: "DevOps"
-  image: cardboardci/vsts:edge
+  image: mcr.microsoft.com/azure/devops/vsts-cli
   script:
     - vsts login -i ${AZDEVOPS_INSTANCE} --token "${AZDEVOPS_TOKEN}"
     - vsts build queue -i ${AZDEVOPS_INSTANCE} --project "CardboardCI" --definition-name "${CI_PROJECT_NAME}"

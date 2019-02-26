@@ -3,6 +3,7 @@ image: docker:latest
 stages:
   - "Validate"
   - "Analyze"
+  - "DevOps"
 
 ##
 ## Validate
@@ -18,3 +19,15 @@ PSScriptAnalyzer:
 #   image: cardboardci/hadolint
 #   script:
 #     - hadolint Dockerfile*
+
+##
+## Release
+##
+azure:
+  stage: "DevOps"
+  image: cardboardci/vsts:edge
+  script:
+    - vsts login -i ${AZDEVOPS_INSTANCE} --token "${AZDEVOPS_TOKEN}"
+    - vsts build queue -i ${AZDEVOPS_INSTANCE} --project "CardboardCI" --definition-name "${CI_PROJECT_NAME}"
+  only:
+    - master

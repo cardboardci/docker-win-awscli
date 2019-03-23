@@ -1,8 +1,6 @@
 pool:
   vmImage: 'windows-2019'
 
-trigger: none
-
 steps:
 - task: Docker@1
   displayName: Login

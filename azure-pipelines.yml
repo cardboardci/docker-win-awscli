@@ -13,12 +13,10 @@ steps:
   displayName: Setup
   inputs:
     targetType: filePath
-    filePath: '$(Build.Repository.LocalPath)/r/.docker/Setup.ps1'
-    workingDirectory: '$(Build.Repository.LocalPath)/r'
+    filePath: '.docker/Setup.ps1'
 
 - task: PowerShell@2
   displayName: Build
   inputs:
     targetType: filePath
-    filePath: '$(Build.Repository.LocalPath)/r/build/Run.ps1'
-    workingDirectory: '$(Build.Repository.LocalPath)/r'
+    filePath: 'build/Run.ps1'

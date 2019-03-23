@@ -8,7 +8,7 @@ steps:
   displayName: Login
   inputs:
     containerregistrytype: 'Container Registry'
-    dockerRegistryEndpoint: DockerHub
+    dockerRegistryEndpoint: CardboardCI
     command: login
 
 - task: PowerShell@2

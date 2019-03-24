@@ -1,3 +1,3 @@
 Write-Output "Starting build"
-docker build --pull -t cardboardci/awscli:windows -f Dockerfile .
+docker build -t cardboardci/awscli:windows -f Dockerfile .
 docker push cardboardci/awscli:windows
